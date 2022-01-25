@@ -1,3 +1,3 @@
-FROM heroku/nodejs
+FROM vigneshvj/nodejs
 
 CMD bin/web
