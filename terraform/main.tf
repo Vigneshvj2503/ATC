@@ -86,11 +86,12 @@ resource "aws_eks_node_group" "node" {
     min_size     = 1
     
  }
- resource "null_resource" "localexec" {
-  provisioner "local-exec" {
-    command = "sh userdata.sh"
-  }
-}
+ post_bootstrap_user_data = <<-EOT
+      aws eks update-kubeconfig --name eks_cluster_atc
+	    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+	    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+      kubectl version --client
+      EOT
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.
