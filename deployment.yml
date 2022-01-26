@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejsdeployment
+  name: nodejsapp
 spec:
   selector:
     matchLabels:
-      name: nodejsdeployment
+      name: nodejsapp
   template:
     metadata:
       labels:
-        name: nodejsdeployment
+        name: nodejsapp
     spec:
       containers:
         - name: app
-          image: vigneshvj/nodejs
+          image: vigneshvj/nodejsapp
           ports:
             - containerPort: 8080
