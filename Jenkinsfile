@@ -28,7 +28,6 @@ node {
             kubeconfigId: 'K8S',
             enableConfigSubstitution: true
             )               
-        }
 		kubernetesDeploy(
             configs: 'svc.yml',
             kubeconfigId: 'K8S',
