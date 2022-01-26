@@ -1,6 +1,7 @@
 ---
 - name: PlayBook to Install AWS CLI and Terraform
-  hosts: localhosts
+  hosts: localhost
+  become: true
   
   tasks:
   - name:
