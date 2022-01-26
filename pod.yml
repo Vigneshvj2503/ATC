@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: app
-          image: vigneshvj/nodejsapp
+          image: vigneshvj/nodejsapp-jen
           ports:
             - containerPort: 8080
