@@ -22,7 +22,17 @@ node ("slave") {
             app.push("latest")
         }
 	stage ('K8S Pod-Svc Deploy') {
-       		sh 'echo Service Deployed'            
+       
+        kubernetesDeploy(
+            configs: 'pod.yml',
+            kubeconfigId: 'K8S',
+            enableConfigSubstitution: true
+            )               
+		kubernetesDeploy(
+            configs: 'svc.yml',
+            kubeconfigId: 'K8S',
+            enableConfigSubstitution: true
+            )               
         }
     }
 }
